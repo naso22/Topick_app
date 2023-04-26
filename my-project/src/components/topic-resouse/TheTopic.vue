@@ -1,27 +1,26 @@
 <template>
 <div class="wroper">
+    <add-modal :topic="topic" :Addresource="addResources" v-if="modalOpen" @update-modal="modalOpen = $event"></add-modal>
 <topic-resource :topic="topic" :random="random"></topic-resource>
     <div class="btn">
         <div class=" flex-center">
             <base-button @click="runSlot()">回す</base-button>
             <base-button @click="stopSlot()">止める</base-button>
             <base-button @click="modalSelect()">話題を追加</base-button>
-            <teleport to="body" >
-            <add-modal :topic="topic" :Addresource="addResources" v-if="modalOpen" v-model="modalOpen"></add-modal>
-            </teleport>
+
 
         </div>
     </div>
     </div>
+
 </template>
 
 <script>
 import TopicResource from './TopicResource.vue';
-import AddModal from "./AddModal.vue";
 export default {
 components:{
     TopicResource,
-    AddModal
+
 },
     data(){
     return{

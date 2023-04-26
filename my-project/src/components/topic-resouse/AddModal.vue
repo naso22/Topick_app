@@ -2,7 +2,7 @@
    <transition name="modal">
       <div class="modal">
          <div class="modal-body">
-            <button class="modal-close" @click="modalClose()">×</button>
+            <div class="modal-close" @click="modalClose()">×</div>
             <div class="modal-content">
                <div class="modal-topic">
                   <ul v-for="topic_item in topic" :key="topic_item">
@@ -43,8 +43,8 @@ props:['topic','Addresource',],
       },
 
       modalClose(){
-         this.localOpen=false
-         console.log(this.localOpen)
+         this.$emit('update-modal', false)
+
       }
    }
 }
