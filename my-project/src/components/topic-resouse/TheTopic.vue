@@ -1,12 +1,12 @@
 <template>
-<div class="wroper">
-    <add-modal :topic="topic" :Addresource="addResources" v-if="modalOpen" @update-modal="modalOpen = $event"></add-modal>
+<div class="wroper"  >
+    <add-modal :topic="topic" :Addresource="addResources"  :modalopen="modalOpen" @close="modalSelect"></add-modal>
 <topic-resource :topic="topic" :random="random"></topic-resource>
     <div class="btn">
         <div class=" flex-center">
             <base-button @click="runSlot()">回す</base-button>
             <base-button @click="stopSlot()">止める</base-button>
-            <base-button @click="modalSelect()">話題を追加</base-button>
+            <base-button @click="modalOpen = true">話題を追加</base-button>
 
 
         </div>
@@ -28,22 +28,11 @@ components:{
         random: 0,
         timers: 0,
         topic:[
-            '好きな食べ物の話',
-            '地元や出身地の話',
-            '可愛い動物の動画',
-            '天気の話',
-            '黒歴史',
-            'テレビやドラマの話',
-            '共通の友達の話',
-            'スーパーマリオゲーム',
-            '初恋のお話',
-            '最近面白かった話',
-            'お互いの第一印象の話',
-            '学生時代や幼少期の話',
-            '「もしも〇〇だったら」の話',
-            'ウンコ味のカレーVSカレー味のウンコ',
-            'Wordウルフ',
-            '人狼ゲーム',
+            'ルーレット１',
+            'ルーレット2',
+            'ルーレット3',
+            'ルーレット4',
+
         ],
     }
     },
@@ -58,6 +47,9 @@ components:{
         },
 
         modalSelect(){
+        if (this.modalOpen){
+            this.modalOpen = false;
+        }
         this.modalOpen = true;
         },
 

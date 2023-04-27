@@ -1,8 +1,8 @@
 <template>
-   <transition name="modal">
+   <transition name="modal" v-if="modalopen">
       <div class="modal">
          <div class="modal-body">
-            <div class="modal-close" @click="modalClose()">×</div>
+            <div class="modal-close" @click="$emit('close')" >×</div>
             <div class="modal-content">
                <div class="modal-topic">
                   <ul v-for="topic_item in topic" :key="topic_item">
@@ -24,12 +24,12 @@
 
 <script>
 export default {
-props:['topic','Addresource',],
+props:['topic','Addresource','modalopen'],
+   emits:['close'],
    data(){
    return{
       localTopic: this.topic,
-      localOpen: this.modalOpen
-
+      modalOpen:false,
    }
    },
    methods:{
@@ -42,11 +42,13 @@ props:['topic','Addresource',],
          this.localTopic.splice(index, 1);
       },
 
-      modalClose(){
-         this.$emit('update-modal', false)
 
-      }
-   }
+   modalClose(){
+      this.modalopen = false;
+
+}
+   },
+
 }
 
 </script>
